@@ -1,0 +1,290 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Luxury Color Palette - Charcoal & Silver */
+    --background: 0 0% 6%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 96%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 0 0% 8%;
+
+    /* Metallic Silver - for accents */
+    --primary: 0 0% 75%;
+    --primary-foreground: 0 0% 5%;
+
+    /* Deep Charcoal */
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    /* Neutral Muted */
+    --muted: 0 0% 92%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Subtle Accent */
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 0 0% 55%;
+
+    --radius: 0px;
+
+    /* Custom Luxury Tokens */
+    --silver: 0 0% 75%;
+    --silver-light: 0 0% 85%;
+    --silver-dark: 0 0% 60%;
+    --ivory: 0 0% 98%;
+    --charcoal: 0 0% 10%;
+    --charcoal-light: 0 0% 18%;
+    
+    /* Text hierarchy - High contrast */
+    --text-title: 0 0% 100%;
+    --text-body: 0 0% 80%;
+
+    /* Gradients */
+    --gradient-silver: linear-gradient(135deg, hsl(0 0% 70%), hsl(0 0% 85%));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 6%), hsl(0 0% 12%));
+    --gradient-hero: linear-gradient(180deg, hsl(0 0% 5% / 0.9), hsl(0 0% 8% / 0.95));
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Montserrat', system-ui, sans-serif;
+
+    /* Shadows */
+    --shadow-luxury: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
+    --shadow-silver: 0 10px 40px -10px hsl(0 0% 50% / 0.3);
+  }
+
+  .dark {
+    --background: 0 0% 6%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 75%;
+    --primary-foreground: 0 0% 8%;
+    --secondary: 0 0% 90%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 95%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+@layer components {
+  .text-silver {
+    color: hsl(var(--silver));
+  }
+
+  .bg-silver {
+    background-color: hsl(var(--silver));
+  }
+
+  .text-charcoal {
+    color: hsl(var(--charcoal));
+  }
+
+  .bg-charcoal {
+    background-color: hsl(var(--charcoal));
+  }
+
+  .bg-ivory {
+    background-color: hsl(var(--ivory));
+  }
+
+  .gradient-silver {
+    background: var(--gradient-silver);
+  }
+
+  .gradient-dark {
+    background: var(--gradient-dark);
+  }
+
+  .font-serif {
+    font-family: var(--font-serif);
+  }
+
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+
+  /* Luxury Line Decoration */
+  .luxury-line {
+    @apply relative;
+  }
+
+  .luxury-line::after {
+    content: '';
+    @apply absolute left-1/2 -translate-x-1/2 w-16 h-px mt-6;
+    background: linear-gradient(90deg, transparent, hsl(var(--silver)), transparent);
+  }
+
+  /* Elegant Hover Effect */
+  .hover-silver {
+    @apply transition-all duration-500;
+  }
+
+  .hover-silver:hover {
+    color: hsl(var(--silver));
+    text-shadow: 0 0 30px hsl(var(--silver) / 0.3);
+  }
+
+  /* Reveal Animation */
+  .reveal {
+    @apply opacity-0 translate-y-8;
+    animation: reveal 1s ease-out forwards;
+  }
+
+  .reveal-delay-1 {
+    animation-delay: 0.2s;
+  }
+
+  .reveal-delay-2 {
+    animation-delay: 0.4s;
+  }
+
+  .reveal-delay-3 {
+    animation-delay: 0.6s;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .letter-spacing-luxury {
+    letter-spacing: 0.3em;
+  }
+
+  .letter-spacing-wide {
+    letter-spacing: 0.15em;
+  }
+}
+
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    hsl(var(--silver) / 0) 0%,
+    hsl(var(--silver) / 0.5) 50%,
+    hsl(var(--silver) / 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Google Translate Widget Styling */
+.translate-widget .goog-te-gadget {
+  font-family: var(--font-sans) !important;
+  font-size: 12px !important;
+}
+
+.translate-widget .goog-te-gadget-simple {
+  background-color: transparent !important;
+  border: 1px solid hsl(var(--silver) / 0.3) !important;
+  padding: 6px 12px !important;
+  border-radius: 0 !important;
+  font-size: 11px !important;
+  letter-spacing: 0.1em;
+}
+
+.translate-widget .goog-te-gadget-simple:hover {
+  border-color: hsl(var(--silver)) !important;
+}
+
+.translate-widget .goog-te-gadget-simple span {
+  color: hsl(var(--silver)) !important;
+  font-family: var(--font-sans) !important;
+  text-transform: uppercase !important;
+  font-size: 10px !important;
+  letter-spacing: 0.1em !important;
+}
+
+.translate-widget .goog-te-gadget-simple img {
+  display: none !important;
+}
+
+.translate-widget .goog-te-gadget-icon {
+  display: none !important;
+}
+
+/* Hide Google Translate top bar */
+.goog-te-banner-frame {
+  display: none !important;
+}
+
+body {
+  top: 0 !important;
+}
+
+body > .skiptranslate {
+  display: none !important;
+}
+
+#google_translate_element .skiptranslate {
+  display: block !important;
+}
