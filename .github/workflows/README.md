@@ -37,6 +37,11 @@ git push -u origin main
    - **Name:** `HOSTINGER_FTP_PASSWORD`
      **Value:** Your FTP password
 
+4. Add your Web3Forms key used at build time:
+
+   - **Name:** `VITE_WEB3FORMS_KEY`
+     **Value:** Your Web3Forms access key
+
 ### 4. Update the server directory (if needed)
 Edit `.github/workflows/deploy.yml` and change the `server-dir` line if your Hostinger directory is different from `/public_html/`.
 
