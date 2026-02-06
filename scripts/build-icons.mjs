@@ -4,7 +4,7 @@
  * Place your LP logo at public/logo-source.png first.
  */
 import sharp from 'sharp';
-import { existsSync } from 'fs';
+import { existsSync, copyFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
@@ -23,12 +23,17 @@ const metadata = await source.metadata();
 const size = Math.min(metadata.width ?? 512, metadata.height ?? 512);
 
 // Favicon 32x32 (browser tab)
+const favicon32Path = join(publicDir, 'favicon-32x32.png');
 await source
   .clone()
   .resize(32, 32)
   .png()
-  .toFile(join(publicDir, 'favicon-32x32.png'));
+  .toFile(favicon32Path);
 console.log('Created public/favicon-32x32.png');
+
+// Also create favicon.ico (many browsers/search engines look for this specifically)
+copyFileSync(favicon32Path, join(publicDir, 'favicon.ico'));
+console.log('Created public/favicon.ico');
 
 // Favicon 16x16 (small)
 await source
